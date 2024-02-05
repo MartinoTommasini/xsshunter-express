@@ -321,7 +321,8 @@ async function get_app_server() {
             JSON.stringify(chainload_uri)
         ).replace(
             '[PROBE_ID]',
-            JSON.stringify(req.params.probe_id)
+            //JSON.stringify(req.params.probe_id)
+            JSON.stringify(req.path)
         ));
     };
 
@@ -342,7 +343,8 @@ async function get_app_server() {
         console.log(`[INFO] Control panel NOT enabled. Not serving API or GUI server, only acting as a notification server...`);
     }
 
-    app.get('/:probe_id', payload_handler);
+    //app.get('/:probe_id', payload_handler);
+    app.get('/*', payload_handler);
 
     return app;
 }
