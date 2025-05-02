@@ -286,7 +286,8 @@ export default {
         },
         download_html(input_html) {
             const link = document.createElement('a');
-            link.href = `data:text/html,${input_html}`;
+            const base64 = btoa(unescape(encodeURIComponent(input_html)));
+            link.href = `data:text/html;base64,${base64}`;
             link.download = 'xss-page-contents.html';
             link.click();
         },
